@@ -1,9 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:pokedex/routes.dart';
 
+import 'core/errors/pages/fatal_error.dart';
 import 'core/theme/pokedex_theme.dart';
-import 'features/home/presentation/page/home_page.dart';
 import 'initializer.dart';
 
 void main() {
@@ -27,7 +28,20 @@ class RunApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: PokedexTheme.light,
       darkTheme: PokedexTheme.dark,
-      home: const HomePage(),
+      onGenerateRoute: (settings) => Routes.generateRoute(settings),
+      navigatorKey: NavKey.navKey,
+      builder: (context, widget) {
+        Widget screen = const FatalError();
+        if (widget is Scaffold || widget is Navigator) screen = widget!;
+        ErrorWidget.builder = (FlutterErrorDetails errorDetails) => screen;
+        return screen;
+      },
     );
   }
+}
+
+class NavKey {
+  static final navKey = GlobalKey<NavigatorState>();
+
+  static BuildContext? get globalContext => navKey.currentContext;
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pokedex/core/infra/poke_url.dart';
 import 'package:pokedex/core/theme/poke_measures.dart';
+import 'package:pokedex/routes.dart';
 
 class CardPokemon extends StatefulWidget {
   const CardPokemon({
@@ -27,32 +28,40 @@ class _CardPokemonState extends State<CardPokemon> {
           PokeMeasures.borderRadius * 2.0,
         ),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SvgPicture.network(
-            '${PokeURL.baseImageURL}${widget.id}.svg',
-            placeholderBuilder: (context) => const Center(
-              child: CircularProgressIndicator(
-                color: Colors.red,
+      child: InkWell(
+        onTap: () {
+          Routes.push(Routes.pokeDetails, arguments: {
+            'id': widget.id,
+            'name': widget.name,
+          });
+        },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SvgPicture.network(
+              '${PokeURL.baseImageURL}${widget.id}.svg',
+              placeholderBuilder: (context) => const Center(
+                child: CircularProgressIndicator(
+                  color: Colors.red,
+                ),
               ),
+              height: 150,
+              width: 100,
+              fit: BoxFit.contain,
             ),
-            height: 150,
-            width: 100,
-            fit: BoxFit.contain,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: PokeMeasures.base),
-            child: Text(
-              widget.name,
-              style: Theme.of(context)
-                  .textTheme
-                  .headline6!
-                  .copyWith(fontSize: 18.0),
-            ),
-          )
-        ],
+            Padding(
+              padding: const EdgeInsets.only(top: PokeMeasures.base),
+              child: Text(
+                widget.name,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline6!
+                    .copyWith(fontSize: 18.0),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

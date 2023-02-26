@@ -22,11 +22,14 @@ class StatusEntity extends Equatable {
         stat: stat ?? this.stat,
       );
 
-  factory StatusEntity.fromJson(Map<String, dynamic> json) => StatusEntity(
-        baseStat: json["base_stat"],
-        effort: json["effort"],
-        stat: json["stat"] == null ? null : Stat.fromJson(json["stat"]),
-      );
+  factory StatusEntity.fromJson(Map<String, dynamic>? json) {
+    if (json == null) return const StatusEntity();
+    return StatusEntity(
+      baseStat: json["base_stat"],
+      effort: json["effort"],
+      stat: json["stat"] == null ? null : Stat.fromJson(json["stat"]),
+    );
+  }
 
   Map<String, dynamic> toJson() => {
         "base_stat": baseStat,

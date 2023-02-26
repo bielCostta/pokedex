@@ -1,16 +1,24 @@
-# pokedex
 
-A new Flutter project.
+![](https://img.shields.io/static/v1?label=versionApp&message=1.0.0&color=FF6B28&style=%3CSTYLE%3E&logo=%3CLOGO%3E) ![](https://img.shields.io/badge/Flutter-3.3.6-blue)
 
-## Getting Started
+## App Pokedex:
+Aplicativo desenvolvido pelo Gabriel Costa.
 
-This project is a starting point for a Flutter application.
+O APP foi criado utilizando uma variação do [Clean architecture](https://medium.com/ruangguru/an-introduction-to-flutter-clean-architecture-ae00154001b0) com gerênciamento de estado [BLoC.](https://bloclibrary.dev/#/)
 
-A few resources to get you started if this is your first Flutter project:
+**Liks:**
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- [API](https://pokeapi.co/)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## criador:
+-  **Gabriel Costa** - jgccosta21@gmail.com
+
+  
+### Packages:
+
+- Equatable 
+- Flutter_svg
+- Flutter bloc
+- Dio
+- Get_it
